@@ -2,6 +2,7 @@ package ADT_Bag.Test;
 
 import ADT_Bag.ADT.ArrayBag;
 import ADT_Bag.ADT.BagInterface;
+import ADT_Bag.ADT.LinkedBag;
 import ADT_Bag.ADT.ResizeableArrayBag;
 import org.junit.jupiter.api.*;
 
@@ -19,7 +20,7 @@ class ArrayBagTest {
     @BeforeEach
     void setUp() {
         System.out.println("Initializing Bag ADT with 3 Elements");
-        intBag = new ArrayBag<>();
+        intBag = new LinkedBag<>();
         intBag.add(3);
         intBag.add(5);
         intBag.add(10);
