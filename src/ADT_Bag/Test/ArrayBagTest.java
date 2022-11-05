@@ -2,6 +2,7 @@ package ADT_Bag.Test;
 
 import ADT_Bag.ADT.ArrayBag;
 import ADT_Bag.ADT.BagInterface;
+import ADT_Bag.ADT.ResizeableArrayBag;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,7 +54,8 @@ class ArrayBagTest {
             intBag.add(i);
         }
         System.out.println("Testing with when reach max capacity");
-        assertFalse(intBag.add(100));
+        if(intBag instanceof ArrayBag)
+            assertFalse(intBag.add(100));
     }
 
     @Test

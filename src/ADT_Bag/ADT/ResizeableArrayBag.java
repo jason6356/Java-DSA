@@ -1,23 +1,20 @@
 package ADT_Bag.ADT;
 
-/**
- * Final Class = Not Extendable to other classes
- * @param <T>
- */
-public final class ArrayBag<T> implements BagInterface<T>{
+import java.util.Arrays;
 
-    private final T[] bag;
+public final class ResizeableArrayBag<T> implements BagInterface<T>{
+
+    private T[] bag;
     private int numberOfEntries;
     private static final int DEFAULT_CAPACITY = 25;
-
-    //Security Code
     private boolean integrityOK;
     private static final int MAX_CAPACITY = 10000;
-    public ArrayBag(){
+
+    public ResizeableArrayBag(){
         this(DEFAULT_CAPACITY);
     }
     @SuppressWarnings("unchecked") //this line suppress compiler warning
-    public ArrayBag(int capacity){
+    public ResizeableArrayBag(int capacity){
         integrityOK = false;
         if(capacity < MAX_CAPACITY) {
             //create array of obj and cast to T[] type
@@ -53,13 +50,31 @@ public final class ArrayBag<T> implements BagInterface<T>{
         return numberOfEntries >= bag.length;
     }
 
+    private void checkCapacity(int capacity){
+        if(capacity > MAX_CAPACITY)
+            throw new IllegalArgumentException("Attempt to create a bag whose " +
+                    "capacity exeeds allowed " + "maximum of " + MAX_CAPACITY);
+
+    }
+
+    /**
+     * Doubles the size of the array bag
+     */
+    private void doubleCapacity(){
+        int newLength = 2 * bag.length;
+        checkCapacity(newLength);
+        bag = Arrays.copyOf(bag,newLength);
+    }
+
     @Override
     public boolean add(T newEntry) {
 
         checkIntegrity();
-        if (isArrayFull())
-            return false;
-        else {
+
+        if(isArrayFull()){
+            doubleCapacity();
+        }
+        else{
             bag[numberOfEntries] = newEntry;
             numberOfEntries++;
         }
