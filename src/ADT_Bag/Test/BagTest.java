@@ -3,7 +3,6 @@ package ADT_Bag.Test;
 import ADT_Bag.ADT.ArrayBag;
 import ADT_Bag.ADT.BagInterface;
 import ADT_Bag.ADT.LinkedBag;
-import ADT_Bag.ADT.ResizeableArrayBag;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class ArrayBagTest {
+class BagTest {
 
     BagInterface<Integer> intBag;
 
