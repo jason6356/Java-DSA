@@ -78,11 +78,11 @@ public final class ArrayBag<T> implements BagInterface<T>{
     }
 
     private void removeGap(int index){
-        for(int i = index; i < numberOfEntries - 1; i++){
+        for(int i = index; i < numberOfEntries - 1; i++) {
             bag[i] = bag[i + 1];
         }
-    }
 
+    }
     /**
      * Get the index of the anEntry when searching through the bag
      * @param anEntry The Entry to search

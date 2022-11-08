@@ -1,11 +1,11 @@
 package ADT_Bag.ADT;
 
-public class LinkedBag<T> implements BagInterface<T>{
+public class LinkedBag<T> implements BagInterface<T> {
 
     private Node firstNode;
     private int numberOfEntries;
 
-    public LinkedBag(){
+    public LinkedBag() {
         firstNode = null;
         numberOfEntries = 0;
     }
@@ -22,10 +22,9 @@ public class LinkedBag<T> implements BagInterface<T>{
 
     @Override
     public boolean add(T newEntry) {
-        if(isEmpty()){
+        if (isEmpty()) {
             firstNode = new Node(newEntry);
-        }
-        else{
+        } else {
             Node newNode = new Node(newEntry);
             newNode.next = firstNode;
             firstNode = newNode;
@@ -38,7 +37,7 @@ public class LinkedBag<T> implements BagInterface<T>{
     @Override
     public T remove() {
         T result = null;
-        if(!isEmpty()){
+        if (!isEmpty()) {
             result = firstNode.data;
             firstNode = firstNode.next;
             numberOfEntries--;
@@ -46,13 +45,11 @@ public class LinkedBag<T> implements BagInterface<T>{
         return result;
     }
 
-    private Node getReferenceTo(T anEntry){
+    private Node getReferenceTo(T anEntry) {
         Node currNode = firstNode;
-        while(currNode != null){
-            if(anEntry.equals(currNode.data))
-                return currNode;
-            else
-                currNode = currNode.next;
+        while (currNode != null) {
+            if (anEntry.equals(currNode.data)) return currNode;
+            else currNode = currNode.next;
         }
         return currNode;
     }
@@ -61,7 +58,7 @@ public class LinkedBag<T> implements BagInterface<T>{
     public boolean remove(T anEntry) {
         boolean result = false;
         Node nodeN = getReferenceTo(anEntry);
-        if(nodeN != null) {
+        if (nodeN != null) {
             nodeN.data = firstNode.data;
             firstNode = firstNode.next;
             numberOfEntries--;
@@ -80,9 +77,8 @@ public class LinkedBag<T> implements BagInterface<T>{
         int count = 0;
         Node currNode = firstNode;
 
-        while((count < numberOfEntries) && (currNode != null)){
-            if(anEntry.equals(currNode.data))
-                count++;
+        while ((count < numberOfEntries) && (currNode != null)) {
+            if (anEntry.equals(currNode.data)) count++;
 
             currNode = currNode.next;
         }
@@ -93,9 +89,8 @@ public class LinkedBag<T> implements BagInterface<T>{
     public boolean contains(T anEntry) {
         Node currNode = firstNode;
 
-        while(currNode != null){
-            if(anEntry.equals(currNode.data))
-                return true;
+        while (currNode != null) {
+            if (anEntry.equals(currNode.data)) return true;
 
             currNode = currNode.next;
         }
@@ -108,7 +103,7 @@ public class LinkedBag<T> implements BagInterface<T>{
         T[] result = ((T[]) new Object[numberOfEntries]);
         int index = numberOfEntries - 1;
         Node currNode = firstNode;
-        while((index >= 0) && (currNode != null)){
+        while ((index >= 0) && (currNode != null)) {
             result[index] = currNode.data;
             index--;
             currNode = currNode.next;
@@ -120,11 +115,11 @@ public class LinkedBag<T> implements BagInterface<T>{
         private T data;
         private Node next;
 
-        private Node(T data){
+        private Node(T data) {
             this(data, null);
         }
 
-        private Node(T data, Node next){
+        private Node(T data, Node next) {
             this.data = data;
             this.next = next;
         }

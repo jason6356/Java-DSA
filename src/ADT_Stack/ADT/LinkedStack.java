@@ -1,8 +1,8 @@
 package ADT_Stack.ADT;
 
 import java.util.EmptyStackException;
-import java.util.Vector;
-public final class LinkedStack<T> implements StackInterface<T>{
+
+public final class LinkedStack<T> implements StackInterface<T> {
 
     private Node topNode;
 
@@ -24,10 +24,9 @@ public final class LinkedStack<T> implements StackInterface<T>{
     @Override
     public T peek() {
 
-        if(isEmpty()){
+        if (isEmpty()) {
             throw new EmptyStackException();
-        }
-        else
+        } else
             return topNode.getData();
 
     }
@@ -46,11 +45,11 @@ public final class LinkedStack<T> implements StackInterface<T>{
         private T data;
         private Node next;
 
-        private Node(T data){
-            this(data,null);
+        private Node(T data) {
+            this(data, null);
         }
 
-        private Node(T data, Node next){
+        private Node(T data, Node next) {
             this.data = data;
             this.next = next;
         }

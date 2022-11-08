@@ -1,7 +1,5 @@
 package ADT_Queue.Test;
 
-import ADT_Queue.ADT.ArrayQueue;
-import ADT_Queue.ADT.LinkedQueue;
 import ADT_Queue.ADT.QueueInterface;
 import ADT_Queue.ADT.TwoPartCircularLinkedQueue;
 import org.junit.jupiter.api.AfterEach;
@@ -10,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class QueueTest {
+public final class QueueTest {
 
     QueueInterface<Integer> q;
 
@@ -44,9 +42,11 @@ class QueueTest {
         assertFalse(q.isEmpty());
     }
 
+
     @Test
     void clear() {
         q.clear();
         assertTrue(q.isEmpty());
     }
+
 }
