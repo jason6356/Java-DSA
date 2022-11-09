@@ -55,6 +55,7 @@ public class AList<T> implements ListInterface<T> {
         } else throw new IndexOutOfBoundsException("" + "Illegal position given to remove operation");
     }
 
+    //Utility Method
     private void makeRoom(int givenPosition) {
 
         for (int i = numberOfEntries; i >= givenPosition; i--) {

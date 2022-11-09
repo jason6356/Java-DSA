@@ -1,5 +1,7 @@
 package Algorithms;
 
+import java.util.Arrays;
+
 public class SortArray {
 
     public static <T extends Comparable<? super T>> void selectionSort(T[] a, int n) {
@@ -70,7 +72,6 @@ public class SortArray {
         }
     }
 
-
     public static <T extends Comparable<? super T>> void recursiveInsertInOrder(T anEntry, T[] a, int begin, int end) {
         if (anEntry.compareTo(a[end]) >= 0)
             a[end + 1] = anEntry;
@@ -81,6 +82,93 @@ public class SortArray {
             a[end + 1] = a[end];
             a[end] = anEntry;
         }
+    }
+
+    public static <T extends Comparable<? super T>> void mergeSort(T[] a, int first, int last) {
+        if (first < last) {
+            int mid = (last + first) / 2;
+            System.out.println(mid);
+            mergeSort(a, first, mid);
+            mergeSort(a, mid + 1, last);
+            merge(a, first, mid, last);
+        }
+    }
+
+
+    private static <T extends Comparable<? super T>> void merge(T[] a, int first, int mid, int last) {
+
+        int len1 = mid - first + 1;
+        int len2 = last - mid;
+
+        T[] leftArr = ((T[]) new Comparable[len1]);
+
+        T[] rightArr = ((T[]) new Comparable[len2]);
+        for (int i = 0; i < len1; i++) {
+            leftArr[i] = a[first + i];
+        }
+        for (int i = 0; i < len2; i++) {
+            rightArr[i] = a[mid + 1 + i];
+        }
+        int i, j, k;
+        i = 0;
+        j = 0;
+        k = first;
+
+        while (i < len1 && j < len2) {
+            if (leftArr[i].compareTo(rightArr[j]) <= 0) {
+                a[k] = leftArr[i];
+                i++;
+            } else {
+                a[k] = rightArr[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < len1) {
+            a[k] = leftArr[i];
+            i++;
+            k++;
+        }
+        while (j < len2) {
+            a[k] = rightArr[j];
+            j++;
+            k++;
+        }
+
+
+        System.out.println("After merging ....");
+        Arrays.stream(a).forEach(System.out::println);
+    }
+
+
+    public static <T extends Comparable<? super T>> void quickSort(T[] a, int first, int last) {
+
+        if(first >= last)
+            return;
+        T pivot = a[last];
+
+
+        //while left pointer and right pointer are not pointing at same pointer
+        int leftPtr = first;
+        int rightPtr = last;
+
+        while (leftPtr < rightPtr) {
+
+            //move leftPtr until encounter value > pivot
+            while (a[leftPtr].compareTo(pivot) <= 0 && leftPtr < rightPtr)
+                leftPtr++;
+
+            //move rightPtr until encounter value < pivot
+            while (a[rightPtr].compareTo(pivot) > 0 && leftPtr < rightPtr)
+                rightPtr--;
+
+            swap(a, leftPtr, rightPtr);
+        }
+
+        swap(a, last, leftPtr);
+        quickSort(a, first, leftPtr - 1);
+        quickSort(a, leftPtr + 1, last);
     }
 
 }
