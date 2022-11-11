@@ -50,13 +50,9 @@ public class SearchArray {
 
     public static void main(String[] args) {
 
+        Integer[] ls = {1,2,3,9,10,20,23};
+
+        System.out.println(recursiveInArray(ls,1));
+
     }
-
-
-
-
-
-
-
-
 }
