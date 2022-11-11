@@ -37,6 +37,7 @@ class ListTest {
     void remove() {
         assertThrows(IndexOutOfBoundsException.class, () -> test.remove(100));
         assertEquals(1, test.remove(1));
+        assertEquals(2, test.getLength());
     }
 
     @Test
