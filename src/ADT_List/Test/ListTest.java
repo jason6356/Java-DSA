@@ -1,7 +1,7 @@
 package ADT_List.Test;
 
-import ADT_List.ADT.LList;
-import ADT_List.ADT.ListInterface;
+import ADT_SortedList.ADT.LinkedSortedList;
+import ADT_SortedList.ADT.SortedListInterface;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListTest {
 
-    ListInterface<Integer> test;
+    SortedListInterface<Integer> test;
 
     @BeforeEach
     void setUp() {
-        test = new LList<>();
+        test = new LinkedSortedList<>();
         test.add(1);
         test.add(2);
         test.add(3);
@@ -28,9 +28,9 @@ class ListTest {
 
     @Test
     void add() {
-        test.add(3);
+        test.add(0);
         assertEquals(4,test.getLength());
-        assertEquals(3, test.getEntry(4));
+        assertEquals(3, test.getPosition(2));
     }
 
     @Test
@@ -47,9 +47,7 @@ class ListTest {
 
     @Test
     void replace() {
-        assertEquals(1,test.getEntry(1));
-        test.replace(1,100);
-        assertEquals(100, test.getEntry(1));
+        assertEquals(1,test.getPosition(1));
     }
 
     @Test
