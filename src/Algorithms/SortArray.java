@@ -1,6 +1,7 @@
 package Algorithms;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class SortArray {
 
@@ -21,7 +22,8 @@ public class SortArray {
 
     public static <T extends Comparable<? super T>> void selectionSort(T[] a, int first, int last) {
         if (first < last) {
-            getIndexOfSmallest(a, first, last);
+            int smallestIndex = getIndexOfSmallest(a, first, last);
+            swap(a,first,smallestIndex);
 
             selectionSort(a, first + 1, last);
         }
@@ -95,6 +97,7 @@ public class SortArray {
     }
 
 
+    @SuppressWarnings("unchecked")
     private static <T extends Comparable<? super T>> void merge(T[] a, int first, int mid, int last) {
 
         int len1 = mid - first + 1;
@@ -143,19 +146,14 @@ public class SortArray {
 
 
     public static <T extends Comparable<? super T>> void quickSort(T[] a, int first, int last) {
-
-        if(first >= last)
-            return;
-        T pivot = a[last];
-
-
-        //while left pointer and right pointer are not pointing at same pointer
+        if (first >= last) return;
+        int pivotIndex = new Random().nextInt(last - first) + first;
+        T pivot = a[pivotIndex];
+        swap(a, pivotIndex, last);
+        /*while left pointer and right pointer are not pointing at same pointer*/
         int leftPtr = first;
         int rightPtr = last;
-
-        while (leftPtr < rightPtr) {
-
-            //move leftPtr until encounter value > pivot
+        while (leftPtr < rightPtr) {//move leftPtr until encounter value > pivot
             while (a[leftPtr].compareTo(pivot) <= 0 && leftPtr < rightPtr)
                 leftPtr++;
 
@@ -165,10 +163,11 @@ public class SortArray {
 
             swap(a, leftPtr, rightPtr);
         }
-
         swap(a, last, leftPtr);
         quickSort(a, first, leftPtr - 1);
         quickSort(a, leftPtr + 1, last);
     }
+
+
 
 }

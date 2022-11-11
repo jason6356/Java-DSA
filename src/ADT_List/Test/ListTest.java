@@ -1,6 +1,5 @@
 package ADT_List.Test;
 
-import ADT_List.ADT.AList;
 import ADT_List.ADT.LList;
 import ADT_List.ADT.ListInterface;
 import org.junit.jupiter.api.AfterEach;
@@ -29,7 +28,6 @@ class ListTest {
 
     @Test
     void add() {
-
         test.add(3);
         assertEquals(4,test.getLength());
         assertEquals(3, test.getEntry(4));
