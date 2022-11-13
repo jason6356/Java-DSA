@@ -1,22 +1,25 @@
 package Algorithms;
 
-import java.util.Arrays;
-
 public class TestArraySort {
 
     public static void main(String[] args) {
-        Integer[] arr = {7, 5, 9, 3, 6, 0, 2, 4};
+        String test = "test";
 
-        arr = Arrays.stream(arr)
-                .map((e) -> e + 10)
-                .toArray(Integer[]::new);
+        int hashCodeFromJava = test.hashCode();
+        int hashCodeFromOwn = getHashCode(test);
 
-        Arrays.stream(arr).forEach(System.out::println);
+        System.out.println("Hash Code from Java : " + hashCodeFromJava);
+        System.out.println("Hash Code from Own : " + hashCodeFromOwn);
 
-        SortArray.mergeSort(arr, 0, arr.length - 1);
+    }
 
-        System.out.println("After Sorting");
+    public static int getHashCode(String s){
+       int len = s.length();
+       int hash = 0;
+       int g = 31;
+       for(int i = 0; i < len; i++)
+          hash = g * hash + s.charAt(i);
 
-        Arrays.stream(arr).forEach(System.out::println);
+       return hash;
     }
 }

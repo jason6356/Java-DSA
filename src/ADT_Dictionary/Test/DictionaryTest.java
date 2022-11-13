@@ -1,7 +1,7 @@
 package ADT_Dictionary.Test;
 
-import ADT_Dictionary.ADT.ArrayDictionary;
 import ADT_Dictionary.ADT.DictionaryInterface;
+import ADT_Dictionary.ADT.HashedDictionary;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,11 +18,10 @@ class DictionaryTest {
 
     @BeforeEach
     void setUp() {
-        dictionary = new ArrayDictionary<>();
-        dictionary.add(0,"Ali");
+        dictionary = new HashedDictionary<>();
         dictionary.add(1,"Abu");
+        dictionary.add(0,"Ali");
         dictionary.add(2,"Ahmad");
-
         System.out.println("Setting Up Dictionary Of Values Of");
         String str = """
                key = 0, Value = Ali
@@ -30,7 +29,7 @@ class DictionaryTest {
                key = 2, Value = Ahmad\040
                 """;
 
-        System.out.println(str);
+        System.out.println(dictionary.toString());
     }
 
     @AfterEach
