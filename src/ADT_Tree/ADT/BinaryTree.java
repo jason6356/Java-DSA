@@ -34,8 +34,9 @@ public class BinaryTree <T> implements  BinaryTreeInterface<T>{
         if(rightTree != null && rightTree != this)
             rightTree.clear();
     }
-
-
+    public BinaryNode<T> getRoot() {
+        return root;
+    }
     @Override
     public void setRootData(T rootData) {
         if(rootData == null)
