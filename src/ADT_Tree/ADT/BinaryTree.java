@@ -1,7 +1,5 @@
 package ADT_Tree.ADT;
-
 import ADT_Tree.Exceptions.EmptyTreeException;
-
 import java.util.Iterator;
 
 public class BinaryTree <T> implements  BinaryTreeInterface<T>{
@@ -43,6 +41,10 @@ public class BinaryTree <T> implements  BinaryTreeInterface<T>{
             throw new IllegalArgumentException();
 
         root.setData(rootData);
+    }
+
+    public void setRoot(BinaryNode<T> root) {
+        this.root = root;
     }
 
     @Override
